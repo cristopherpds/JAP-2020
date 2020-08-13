@@ -15,10 +15,11 @@ var hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
-var getJSONData = function(url){
+var getJSONData = function(PRODUCTS_URL){
     var result = {};
     showSpinner();
-    return fetch(url)
+
+    return fetch(PRODUCTS_URL)
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -31,6 +32,7 @@ var getJSONData = function(url){
           result.data = response;
           hideSpinner();
           return result;
+          
     })
     .catch(function(error) {
         result.status = 'error';
@@ -44,4 +46,11 @@ var getJSONData = function(url){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+  getJSONData(PRODUCTS_URL).then(function(resObj){
+    if(resObj === 'ok'){
+      productsArray = resObj.data;
+      showProductsList(productsArray);
+
+    }
+  });
 });
