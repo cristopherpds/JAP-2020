@@ -3,20 +3,23 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-    function validation(){
+    const name = document.getElementById('userName');
+    const paswword = document.getElementById('userPassword');
+    const acept = document.getElementById('acept');
+    const form = document.getElementById('login-form');
+    const warning = document.getElementById('warning');
 
-        var userName = document.getElementById('userName').value;
-        var userPassword = document.getElementById('userPassword').value;
 
-        if(userName== " " && userPassword == " "){
-            alert('Porfavor rellene los campos')
+    form.addEventListener('submit', e =>{
+        e.preventDefault();
+        let warnings
+        if(name.value === "user" && paswword.value === "user" && acept.checked){
+            window.location.href = 'index.html';
         }
         else{
-
+            alert('Usuario: user \n \n Contraseña: user');
         }
+    })
 
-        return true
-
-    }
     
 });

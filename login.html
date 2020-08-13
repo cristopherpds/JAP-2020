@@ -34,30 +34,35 @@
       padding: 15px;
       margin: auto;
     }
+    
   </style>
 </head>
 
 <body class="text-center">
-  <div class="container p-5">
-    <div class="color">
-    <form action="" method="" id="" name="">
+  <class class="container p-5">
+    <form action="" method="POST" id="login-form" name="">
+
       <div class="form-group signin" class="signin">
         <label for="exampleInputEmail1">Nombre de Usuario</label>
         <input type="text" class="form-control"  aria-describedby="emailHelp" id="userName">
         <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su datos con nadie más.</small>
       </div>
+
       <div class="form-group signin ">
         <label for="exampleInputPassword1">Contraseña</label>
         <input type="password" class="form-control"  id="userPassword">
       </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+      <div class="form-group form-check signin">
+        <input type="checkbox" class="form-check-input" id="acept">
+        <label class="form-check-label" for="exampleCheck1">Confirmar</label>
       </div>
-      <button type="submit" class="btn btn-primary" id="btnValidation">Submit</button>
-  </form>
-  </div>
-  </div>
+
+      <button type="submit" class="btn btn-primary" id="btnValidation" >Submit</button>
+      <p class="warning"></p>
+
+    </form>
+  </class>
   <!--<div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
