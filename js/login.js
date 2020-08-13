@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         e.preventDefault();
         let warnings
         if(name.value === "user" && paswword.value === "user" && acept.checked){
-            window.location.href = 'index.html';
+            window.location.href = 'home.html';
         }
         else{
             alert('Usuario: user \n \n Contraseña: user');
