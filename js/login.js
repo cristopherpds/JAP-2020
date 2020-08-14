@@ -7,19 +7,27 @@ document.addEventListener("DOMContentLoaded", function(e){
     const paswword = document.getElementById('userPassword');
     const acept = document.getElementById('acept');
     const form = document.getElementById('login-form');
-    const warning = document.getElementById('warning');
+
 
 
     form.addEventListener('submit', e =>{
         e.preventDefault();
-        let warnings
         if(name.value === "user" && paswword.value === "user" && acept.checked){
             window.location.href = 'home.html';
         }
         else{
             alert('Usuario: user \n \n Contraseña: user');
         }
-    })
+    });
 
-    
+    //Para posible implementacion conla BD
+    //Script de Google 
+    /*function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); 
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); 
+    var id_token = googleUser.getAuthResponse().id_token;*/
+
 });
