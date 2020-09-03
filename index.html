@@ -51,7 +51,7 @@
 
 <body class="text-center">
   <class class="container p-5">
-    <form action="" method="POST" id="login-form" name="">
+    <form action="" method="POST" id="login-form" name="" >
 
       <div class="form-group signin" class="signin">
         <label for="exampleInputEmail1">Nombre de Usuario</label>
@@ -64,13 +64,13 @@
         <input type="password" class="form-control"  id="userPassword">
       </div>
 
-      <div class="form-group form-check signin">
+      <!--<div class="form-group form-check signin">
         <input type="checkbox" class="form-check-input" id="acept">
         <label class="form-check-label" for="exampleCheck1">Acepto terminos y condiciones</label>
         
-      </div>
+      </div>-->
 
-      <button type="submit" class="btn btn-primary" id="btnValidation" >Submit</button>
+      <button type="submit" class="btn btn-primary" id="btnValidation" onclick= "guardarUsuario(userName.value)">Submit</button>
       <!--<button type="submit" class="btn g-signin2" id="btnGoogle" >Aceder con Google</button>-->
       
       <div class="g-signin2 signin" data-onsuccess="onSignIn" id="btnGoogle"></div>
