@@ -114,53 +114,24 @@ const postComments = () => {
 
 
 
-function showRelatedProducts(relacionados){
-    getJSONData(PRODUCTS_URL).then(function(resultObj) {
-        let html = "";
-        if(resultObj.status === "ok"){
-            let todosLosProductos = resultObj.data;
-            for(let i = 0; i < relacionados.length; i++){
-                let relacionadosPoicion = relacionados[i];
-                let related = todosLosProductos[relacionadosPoicion];
-                html +=`
-                <div class= "col-lg-3 col-md-4 col-6 border">
-                    <div id="relatedVideogameImg" class= "row">
-                        <img class="img-fluid p-2" src="`+related.imgSrc+`">                                              
-                    </div>                   
-                    <div "relatedVideogameInfo" class= "row p-2">
-                    <p>`+ related.name + `</p> 
-                    <p>`+ related.description + `</p>
-                    </div>
-                    <div class= "row p-2">
-                    <a href="product-info.html">Ver</a>
-                    </div>                     
-                </div>`
-                
-            }
-        }
-        document.getElementById("relatedProductContainer").innerHTML = html;
-    })
-
-}
-/*const showRelatedProducts = (relatedProductsArray) => {
+const showRelatedProducts = (relatedProductsArray) => {
     getJSONData(PRODUCTS_URL).then(resultObj => {
         let productHtmlToAppend = "";
 
         if (resultObj.status === "ok") {
-            let productList = resultObj.data;
-            console.log(productList);
+            let allProducts = resultObj.data;
             for (let i = 0; i < relatedProductsArray.length; i++) {
                 let relatedProductPosition = relatedProductsArray[i];
-                let related = productsList[relatedProductPosition];
+                let related = allProducts[relatedProductPosition];
 
                 productHtmlToAppend += `
                 <div class= "col-lg-3 col-md-4 col-6 border">
                     <div id="relatedVideogameImg" class= "row">
-                        <img class="img-fluid p-2" src="`+related.imgSrc+`">                                              
+                        <img class="img-fluid p-2" src="${related.imgSrc}">                                              
                     </div>                   
                     <div "relatedVideogameInfo" class= "row p-2">
-                    <p>`+ related.name + `</p> 
-                    <p>`+ related.description + `</p>
+                    <p>${related.name} </p> 
+                    <p>${related.description}</p>
                     </div>
                     <div class= "row p-2">
                     <a href="products-info.html">Ver</a>
@@ -173,8 +144,8 @@ function showRelatedProducts(relacionados){
         }
         document.getElementById("relatedProductContainer").innerHTML = productHtmlToAppend;
 
-    })
-}*/
+    });
+}
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -194,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
             showImagesGallery(product.images);
             showRelatedProducts(product.relatedProducts);
-            console.log(product.relatedProducts);
+            
         }
 
     });
