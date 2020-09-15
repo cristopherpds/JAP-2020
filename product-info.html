@@ -23,10 +23,11 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito </a>
-      <a class="py-2 d-none d-md-inline-block" href="my-profile.html"><i class="fa fa-user fa-fw"></i><span id="name">&nbsp;</span></a>
+      <a class="py-2 d-none d-md-inline-block" href="my-profile.html"><i class="fa fa-user fa-fw"></i><span
+          id="name">&nbsp;</span></a>
     </div>
   </nav>
-    <main role="main">
+  <main role="main">
     <div class="container mt-5">
       <div class="text-center p-4">
         <h2>Descripción del producto</h2>
@@ -42,22 +43,22 @@
           <p id="productDescription"></p>
         </dd>
 
-          <dt>Precio</dt>
+        <dt>Precio</dt>
         <dd>
           <p id="productCost"></p>
         </dd>
 
-          <dt>Moneda</dt>
+        <dt>Moneda</dt>
         <dd>
           <p id="productCurrency"></p>
         </dd>
 
-          <dt>Cantidad vendida</dt>
+        <dt>Cantidad vendida</dt>
         <dd>
           <p id="productSoldCount"></p>
         </dd>
 
-          <dt>Categoria</dt>
+        <dt>Categoria</dt>
         <dd>
           <p id="productCategory"></p>
         </dd>
@@ -67,6 +68,37 @@
           <div class="row text-center text-lg-left pt-2" id="productsImagesWrapper">
           </div>
         </dd>
+
+        <dt>Productos relacionados</dt>
+        <hr class="my-3">
+        <dd>
+          <div class="container-fluid">
+            <div class="row" id="relatedProductContainer">
+            </div>
+          </div>
+        </dd>
+        <hr class="my-3">
+        <div class="container border">
+          <h2 class="mx-4">Comentarios</h2>
+        </div>
+        
+        <div class="container border" id="reviewContainer">
+        </div>
+        <hr class="my-3">
+        <div class="container border ">
+          <label for="txtAreaComments" class="text-muted">Agregar comentario</label>
+          <textarea class="form-control" name="comments mr-2" id="txtAreaComments" rows="5"
+            placeholder="Agrega un comentario"></textarea>
+          <div class="container" id="selectRating">
+            <span class="comments p-2" id="comments">Calificar: </span>
+            <span class="fa fa-star" id="star1" onclick="addStars(this,1)"></span>
+            <span class="fa fa-star" id="star2" onclick="addStars(this,2)"></span>
+            <span class="fa fa-star" id="star3" onclick="addStars(this,3)"></span>
+            <span class="fa fa-star" id="star4" onclick="addStars(this,4)"></span>
+            <span class="fa fa-star" id="star5" onclick="addStars(this,5)"></span>
+          </div>
+          <button class="btn btn-primary btn-lg" type="submit" id="submitComment">Enviar comentario</button>
+        </div>
       </dl>
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
     </div>
@@ -75,7 +107,7 @@
     <div class="container">
       <p class="float-right">
         <a href="#">Volver arriba</a>
-      <!--</p>
+        <!--</p>
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>-->
     </div>
