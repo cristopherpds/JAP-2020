@@ -7,9 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <!--Google sing in-->
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
 
-  <meta name="google-signin-client_id" content="716688544268-p71br4l80ejpuhi550adr1qqdfb0f827.apps.googleusercontent.com" >
+  <meta name="google-signin-client_id" content="716688544268-o83ukn5tjnk7786ea013uififeargnf2.apps.googleusercontent.com" >
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
   <title>eMercado - Todo lo que busques está aquí</title>
 
@@ -64,16 +65,10 @@
         <input type="password" class="form-control"  id="userPassword">
       </div>
 
-      <!--<div class="form-group form-check signin">
-        <input type="checkbox" class="form-check-input" id="acept">
-        <label class="form-check-label" for="exampleCheck1">Acepto terminos y condiciones</label>
-        
-      </div>-->
-
       <button type="submit" class="btn btn-primary" id="btnValidation" onclick= "saveUser(userName.value)">Submit</button>
-      <!--<button type="submit" class="btn g-signin2" id="btnGoogle" >Aceder con Google</button>-->
-      
-      <div class="g-signin2 signin" data-onsuccess="onSignIn" id="btnGoogle"></div>
+      <div class=" form-group signin g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
+      <!--<div class="g-signin2 signin" data-onsuccess="onSignIn" id="btnGoogle"></div>-->
     </form>
     
   </class>

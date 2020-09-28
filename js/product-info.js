@@ -5,15 +5,40 @@ const productNameHTML = document.getElementById('productName');
     productCurrencyHTML = document.getElementById('productCurrency');
     productSoldCountHTML = document.getElementById('productSoldCount');
     productCategoryHTML = document.getElementById('productCategory');
-
-
-
+    
+const submitComment = document.getElementById("submitComment")
 
 var product = {}
 
 
+
+
 function showImagesGallery(array) {
-    let htmlContentToAppend = "";
+    let htmlImg = "";
+    let htmlCarousel = "";
+    for (let i = 0; i < array.length; i++) {
+        let images = array[i];
+        if (i == 0) {
+            
+            htmlImg += `<li data-target="#carouselExampleIndicators" data-slide-to="` + i + `" class="active"></li>`
+            htmlCarousel += `
+                <div class="carousel-item active" data-interval="5000">
+                    <img src="` + images + `" class="d-block w-100" alt="...">
+                </div> `
+        } else {
+            
+            htmlImg += `<li data-target="#carouselExampleIndicators" data-slide-to=" ` + i + `"></li> `
+            htmlCarousel += `
+                <div class="carousel-item" data-interval="2000">
+                    <img src="`+ images + `" class="d-block w-100" alt="...">
+                </div>`
+        }
+    }
+    document.getElementById("carouselHtml").innerHTML = htmlImg; 
+    document.getElementById("productImages").innerHTML = htmlCarousel; 
+
+
+    /*let htmlContentToAppend = "";
     for (let i = 0; i < array.length; i++) {
         let imageSrc = array[i];
 
@@ -25,10 +50,10 @@ function showImagesGallery(array) {
         </div>
         `
     }
-    document.getElementById("productsImagesWrapper").innerHTML = htmlContentToAppend;
+    document.getElementById("productsImagesWrapper").innerHTML = htmlContentToAppend;*/
 }
 
-var sno = 1
+
 function addStars(ths, sno) {
     for (var i = 1; i <= 5; i++) {
         var cur = document.getElementById("star" + i)
@@ -43,8 +68,30 @@ function addStars(ths, sno) {
 
     }
 
+    rating = sno;
+    return rating;
+
 }
 
+
+//funcion para mostrar estrellas en un nuevo comentario
+const showRating = (rating) => {
+    let htmlScore = "";
+    let stars = "";
+
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) { 
+            stars += `<i class="fa fa-star checked"></i>`;
+        } else {
+            stars += `<i class="fa fa-star"></i>`;
+        }
+    }
+    htmlScore = `<span> ${stars} </span>`
+    return htmlScore;
+}
+
+
+//funcion para mostrar estrellas precargadas en el json
 const showStars = (productInfo) => {
     for (let i = 0; i < productInfo.length; i++) {
 
@@ -79,10 +126,10 @@ const showReviews = (productInfo) => {
 }
 
 
-const submitComment = document.getElementById("submitComment")
+
 const postComments = () => {
     let txtAreaComments = document.getElementById("txtAreaComments").value;
-    let selectRating = document.getElementById("selectRating").value;
+        document.getElementById("txtAreaComments").value = " ";
     let today = new Date();
     let mes = parseInt(today.getMonth() + 1);
     if (mes < 10) {
@@ -91,15 +138,13 @@ const postComments = () => {
 
     today = today.getFullYear() + '-' + mes + '-' + today.getDate() + '  ' + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     console.log(today);
-    let showStarsSelected = `<span class="fa fa-star checked"></span>`.repeat(selectRating);
-    let showStarsNotSelected = `<span class="fa fa-star"></span>`.repeat(5 - selectRating);
     if (txtAreaComments) {
         let htmlCommentToAppend = `
     <div class="p-4 my-2">
         <div class="d-flex justify-content-between">
         <h5 class="font-weight-bold"><i class="fas fa-user mr-1"></i> ${localStorage.getItem('user')}</h5>
         <div class="starsContainer">
-            ${showStarsSelected}${showStarsNotSelected}
+            ${showRating(rating)}
         </div>
         </div>
         <p class="pt-2">${txtAreaComments}</p>
@@ -114,8 +159,10 @@ const postComments = () => {
 
 
 
+
 const showRelatedProducts = (relatedProductsArray) => {
-    getJSONData(PRODUCTS_URL).then(resultObj => {
+    getJSONData(PRODUCTS_URL)
+    .then(resultObj => {
         let productHtmlToAppend = "";
 
         if (resultObj.status === "ok") {
@@ -137,8 +184,6 @@ const showRelatedProducts = (relatedProductsArray) => {
                     <a href="products-info.html">Ver</a>
                     </div>                     
                 </div>`
-                
-                
             }
     
         }
@@ -164,6 +209,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productCategoryHTML.innerHTML = product.category;
 
             showImagesGallery(product.images);
+
             showRelatedProducts(product.relatedProducts);
             
         }
@@ -175,7 +221,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showReviews(productComments);
     });
 
-    submitComment.addEventListener("click", postComments);
+    document.getElementById("submitComment").addEventListener("click", function(){
+
+        postComments();
+    });
+
+    //submitComment.addEventListener("click", postComments);
 
 });
 

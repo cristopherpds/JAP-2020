@@ -17,14 +17,11 @@
 
 <body>
   <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <div class="container d-flex flex-column flex-md-row justify-content-between" id="navBar">
       <a class="py-2 d-none d-md-inline-block" href="home.html"><i class="fas fa-home "> </i>&nbsp; Inicio</a>
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito </a>
-      <a class="py-2 d-none d-md-inline-block" href="my-profile.html"><i class="fa fa-user fa-fw"></i><span
-          id="name">&nbsp;</span></a>
     </div>
   </nav>
   <main role="main">
@@ -64,8 +61,25 @@
         </dd>
 
         <dt>Imágenes ilustrativas</dt>
+        <hr class="my-3">
         <dd>
-          <div class="row text-center text-lg-left pt-2" id="productsImagesWrapper">
+          <div class="row text-center text-lg-left pt-2 justify-content-center" id="productImagesGallery">
+            <div id="carouselExampleIndicators" style="width:35pc;" class="carousel slide carousel-fade"
+              data-ride="carousel">
+              <!--cantidad de imagenes en el carrusel-->
+              <ol class="carousel-indicators" id="carouselHtml"></ol>
+              <!-- en este div vamos a poner las imagenes-->
+              <div class="carousel-inner" id="productImages"></div>
+              <!-- muestra las flechas y hace que  corra el carrusel a la imagen anterior y a la siguiente-->
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
           </div>
         </dd>
 
@@ -81,7 +95,7 @@
         <div class="container border">
           <h2 class="mx-4">Comentarios</h2>
         </div>
-        
+
         <div class="container border" id="reviewContainer">
         </div>
         <hr class="my-3">

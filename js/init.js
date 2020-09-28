@@ -46,4 +46,20 @@ var getJSONData = function(url){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+  var userName = localStorage.getItem("user"); 
+  document.getElementById("navBar").innerHTML += `
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary">${userName}</button>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only"></span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/cart.html">Ver mi carrito</a>
+          <a class="dropdown-item" href="/my-profile.html">Mi perfil</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/index.html" onclick="logout()">Cerrar sesión</a>
+        </div>
+      </div>
+  
+    `
 });
