@@ -42,13 +42,116 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container">
+    <div class="text-center p-4">
+      <h2>Carrito de compras</h2>
     </div>
+    <!--productos-->
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Costo</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="cart-products">
+      </tbody>
+    </table>
+    <hr>
+    <!--Metodos de envio, tipo y lugar de entrega...-->
+    <div class="row mb-5 mt-5" id="metodoEnvio">
+      <div class="col">
+        <h4 class="mb-3">Método de envío</h4><br>
+        <legend class="text-muted">Tipo de envío:</legend><br>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio1" name="customRadio1" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio1">Premium (2-5 dias) - Costo del 15% sobre el subtotal.
+          </label>
+        </div> <br>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio2" name="customRadio2" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio2">Express (5-8) - Costo del 7% sobre el subtotal.</label>
+        </div><br>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio3" name="customRadio3" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio3">Standard (12 a 15 dias) - Costo del 5% sobre el
+            subtotal.</label>
+        </div><br>
+        <form action="">
+          <div class="form-row">
+            <legend class="text-muted">Dirección: </legend>
+            <div class="form-group col-sm-6">
+              <label for="address">Calle</label>
+              <input type="text" class="form-control" id="addres" placeholder="Nombre de calle" required>
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="numAdress">Numero</label>
+              <input type="text" class="form-control" id="numAdress" placeholder="Numero de puerta" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <label for="corner">Esquina</label>
+              <input type="text" class="form-control" id="corner" placeholder="Intersección" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <label for="pais">Pais</label>
+              <select name="pais" class="form-control" required>
+                <option value="" selected hidden>Seleccione su pais</option>
+                <option value="1">Argentina</option>
+                <option value="2">España</option>
+                <option value="3">Mexico</option>
+                <option value="4">Brasil</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="ciudad">Ciudad</label>
+              <select name="ciudad" class="form-control" required>
+                <option value="" selected hidden>Seleccione su Ciudad</option>
+                <option value="1">Buenos Aires</option>
+                <option value="2">Barcelona</option>
+                <option value="3">Mexico DF</option>
+                <option value="4">San Pablo</option>
+              </select>
+            </div>
+          </div>
+        </form><br>
+      </div>
+
+    </div>
+    <hr>
+    <!--Costos-->
+    <div class="row">
+      <div class="col">
+        <h4 class="mb-3">Costos</h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item justify-content-between d-flex">
+            <h5>SubTotal </h5><span id="subtotal"></span>
+          </li>
+          <li class="list-group-item justify-content-between d-flex">
+            <h5>Total </h5><span id="total"></span>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+    <footer>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </footer>
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">

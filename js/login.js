@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     function saveUser(userName){
+        localStorage.clear();
         localStorage.setItem('user',  userName);
         
     }

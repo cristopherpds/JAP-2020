@@ -12,7 +12,6 @@ var product = {}
 
 
 
-
 function showImagesGallery(array) {
     let htmlImg = "";
     let htmlCarousel = "";
@@ -103,9 +102,10 @@ const showStars = (productInfo) => {
 
 
 const showReviews = (productInfo) => {
-    let reviwsToAppend = []
+    let reviwsToAppend = [];
     for (let i = 0; i < productInfo.length; i++) {
         let product = productInfo[i];
+        //console.log(product);
         reviwsToAppend += ` 
         <div class="p-4 my-2">
         <div class="d-flex justify-content-between">

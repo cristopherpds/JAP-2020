@@ -5,6 +5,7 @@ const PRODUCTS_URL = "https://japdevdep.github.io/ecommerce-api/product/all.json
 const PRODUCT_INFO_URL = "https://japdevdep.github.io/ecommerce-api/product/5678.json";
 const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
+const CART_INFO_URL2 = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 
 var showSpinner = function(){
@@ -42,24 +43,44 @@ var getJSONData = function(url){
     });
 }
 
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
   var userName = localStorage.getItem("user"); 
-  document.getElementById("navBar").innerHTML += `
+  if(userName != undefined){
+    document.getElementById("navBar").innerHTML += `
       <div class="btn-group">
         <button type="button" class="btn btn-secondary">${userName}</button>
         <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="sr-only"></span>
         </button>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="/cart.html">Ver mi carrito</a>
-          <a class="dropdown-item" href="/my-profile.html">Mi perfil</a>
+          <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/index.html" onclick="logout()">Cerrar sesión</a>
+          <a class="dropdown-item" id="userLogout" href="index.html">Cerrar sesión</a>
         </div>
       </div>
   
     `
+    let close = document.getElementById('userLogout');
+    close.addEventListener("click", (e) =>{
+    localStorage.removeItem("user");
+
+  });
+
+  }
+  else{
+    document.getElementById("navBar").innerHTML +=`
+        <div class="btn-group">
+        <a class="py-2 d-none d-md-inline-block" href="index.html">
+        <button type="button" class="btn btn-secondary">Iniciar Sesión</button>
+        </a>
+        </div>
+    `
+
+  }
+  
 });
