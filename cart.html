@@ -61,69 +61,9 @@
       </tbody>
     </table>
     <hr>
-    <!--Metodos de envio, tipo y lugar de entrega...-->
-    <div class="row mb-5 mt-5" id="metodoEnvio">
-      <div class="col">
-        <h4 class="mb-3">Método de envío</h4><br>
-        <legend class="text-muted">Tipo de envío:</legend><br>
-        <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio1" name="customRadio1" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio1">Premium (2-5 dias) - Costo del 15% sobre el subtotal.
-          </label>
-        </div> <br>
-        <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio2" name="customRadio2" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio2">Express (5-8) - Costo del 7% sobre el subtotal.</label>
-        </div><br>
-        <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio3" name="customRadio3" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio3">Standard (12 a 15 dias) - Costo del 5% sobre el
-            subtotal.</label>
-        </div><br>
-        <form action="">
-          <div class="form-row">
-            <legend class="text-muted">Dirección: </legend>
-            <div class="form-group col-sm-6">
-              <label for="address">Calle</label>
-              <input type="text" class="form-control" id="addres" placeholder="Nombre de calle" required>
-            </div>
-            <div class="form-group col-sm-6">
-              <label for="numAdress">Numero</label>
-              <input type="text" class="form-control" id="numAdress" placeholder="Numero de puerta" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-sm-6">
-              <label for="corner">Esquina</label>
-              <input type="text" class="form-control" id="corner" placeholder="Intersección" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-sm-6">
-              <label for="pais">Pais</label>
-              <select name="pais" class="form-control" required>
-                <option value="" selected hidden>Seleccione su pais</option>
-                <option value="1">Argentina</option>
-                <option value="2">España</option>
-                <option value="3">Mexico</option>
-                <option value="4">Brasil</option>
-              </select>
-            </div>
-            <div class="form-group col-sm-6">
-              <label for="ciudad">Ciudad</label>
-              <select name="ciudad" class="form-control" required>
-                <option value="" selected hidden>Seleccione su Ciudad</option>
-                <option value="1">Buenos Aires</option>
-                <option value="2">Barcelona</option>
-                <option value="3">Mexico DF</option>
-                <option value="4">San Pablo</option>
-              </select>
-            </div>
-          </div>
-        </form><br>
-      </div>
-
-    </div>
+    <div id="shipping" class="radio"></div>
+    <hr>
+    <div id="shippingInformation"></div>
     <hr>
     <!--Costos-->
     <div class="row">
@@ -134,38 +74,103 @@
             <h5>SubTotal </h5><span id="subtotal"></span>
           </li>
           <li class="list-group-item justify-content-between d-flex">
+            <h5>Envío </h5><span id="envio"></span>
+          </li>
+          <li class="list-group-item justify-content-between d-flex">
             <h5>Total </h5><span id="total"></span>
           </li>
         </ul>
-
       </div>
     </div>
-    <footer>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-    </footer>
-  </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+
+    <div class="container">
+      <button id="btnWayToPay" class="btn btn-primary btn-md">Forma de Pago</button>
+      <button type="button" id="btnBuy" class="btn btn-primary btn-md"
+        >Comprar</button>
+        <span id="validations"></span>
     </div>
-  </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
+    <br>
+    <div id="ventanaFP">
+      <div class="modal" tabindex="-1" role="dialog" id="modalWindow">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Seleccione forma de pago</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <label for="tarjeta" class="radio">
+                <input type="radio" name="tarjeta" id="tarjetaRadio"> Tarjeta de credito
+              </label>
+              <hr>
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-sm-6">
+                    <label for="cardNum">Numero de tarjeta</label>
+                    <input type="text" class="form-control" id="cardNum" placeholder="Numero de Tarjeta" name="cardNum"
+                      required>
+                  </div>
+                  <div class="form-group col-sm-6">
+                    <label for="codSeg">Codigo de seg.</label>
+                    <input class="form-control" id="codSeg" type="text" name="codSeg" placeholder="Codigo de seguridad"
+                      required>
+                  </div>
+                  <div class="form-group col-sm-6">
+                    <label for="vto">Vencimiento (MM/AA)</label>
+                    <input class="form-control" id="vto" type="text" name="vto" placeholder="Fecha de vencimiento"
+                      required>
+                  </div>
+                </div>
+                <br>
+                <label for="trans" class="radio">
+                  <input type="radio" name="trans" id="transRadio"> Transferencia bancario
+                </label>
+                <hr>
+                <div class="form-row">
+                  <div class="form-group col-sm-6">
+                    <label for="numAccount">Numero de cuenta</label>
+                    <input class="form-control" id="numAccount" type="text" placeholder="Numero de cuenta"
+                      name="numAccount" required>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary" id="save">Guardar</button>
+                  <span id="validateModel"></span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span id="exito"></span>
+      <br>
+
+
+
+      <footer>
+        <br>
+        <br>
+      </footer>
+    </div>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 
 </html>
