@@ -222,7 +222,7 @@ function modal() {
             msg= false;
         } else {
             //ocultar modal cuando estan los datos correctamente y doy guardar
-            $('##modalWindow').modal('hide');
+            $('#modalWindow').modal('hide');
             msg= true;
         }
         if (msg) {
@@ -285,10 +285,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
             modal()
             cartTotalCost();
             validation()
-
-
-
-
         }
     });
 

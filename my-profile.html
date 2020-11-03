@@ -27,6 +27,67 @@
         font-size: 3.5rem;
       }
     }
+
+    body {
+      margin-top: 20px;
+      color: #1a202c;
+      text-align: left;
+      background-color: #e2e8f0;
+    }
+
+    .main-body {
+      padding: 15px;
+    }
+
+    .card {
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 0 solid rgba(0, 0, 0, .125);
+      border-radius: .25rem;
+    }
+
+    .card-body {
+      flex: 1 1 auto;
+      min-height: 1px;
+      padding: 1rem;
+    }
+
+    .gutters-sm {
+      margin-right: -8px;
+      margin-left: -8px;
+    }
+
+    .gutters-sm>.col,
+    .gutters-sm>[class*=col-] {
+      padding-right: 8px;
+      padding-left: 8px;
+    }
+
+    .mb-3,
+    .my-3 {
+      margin-bottom: 1rem !important;
+    }
+
+    .bg-gray-300 {
+      background-color: #e2e8f0;
+    }
+
+    .h-100 {
+      height: 100% !important;
+    }
+
+    .shadow-none {
+      box-shadow: none !important;
+    }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -43,20 +104,93 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main role="main" class="pb-5">
+    <div class="text-center p-4">
+      <h2>Mi Perfil</h2>
+      <p class="lead">Datos personales</p>
     </div>
-  </div>
-  <footer class="text-muted bg-light">
     <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      <div class="main-body">
+        <div class="row gutters-sm">
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
+                    width="150">
+                  <div class="mt-3" id="setProfileCard">
+                    <!--Aqui se carga informacion de perfil en el card-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card mb-3">
+              <div class="card-body" id="setProfileInfo">
+                <!--Aqui se carga la informacion de perfil completa-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="windowEditProfile">
+        <div class="modal" tabindex="-1" role="dialog" id="modalWindowEditProfile">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Editar Perfil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-row">
+                    <legend class="text-muted"> Información de Perfil</legend>
+                    <div class="form-group col-sm-6">
+                      <label for="name">Nombres</label>
+                      <input type="text" class="form-control" id="nameEdited" name="name" required>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label for="lastName">Apellidos</label>
+                      <input type="text" class="form-control" id="lastNameEdited" name="lastName" required>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-sm-6">
+                      <label for="age">Edad</label>
+                      <input type="number" class="form-control" min="" id="ageEdited" name="age" required>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label for="email">E-mail</label>
+                      <input type="email" class="form-control" id="emailEdited" name="email" required>
+                    </div>
+                      <div class="form-group col-sm-6 ">
+                        <label for="phone">Teléfono de contacto</label>
+                        <input type="number" class="form-control" min="" id="phoneEdited" name="phone" required>
+                      </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="saveProfile">Guardar</button>
+                <span id="validateModelPerfil"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
+    <span id="exitoProfile"></span>
+    <br>
+    <footer class="text-muted bg-light">
+      <br>
+      <br>
+    </footer>
+  </main>
   <div class="alert fade alert-success" role="alert" id="alertResult">
     <span id="resultSpan"></span>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

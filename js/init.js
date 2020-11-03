@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     let close = document.getElementById('userLogout');
     close.addEventListener("click", (e) =>{
     localStorage.removeItem("user");
+    localStorage.clear()
 
   });
 
