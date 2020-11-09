@@ -59,7 +59,31 @@ function showProductsList() {
 
 
         htmlContentToAppend += `
-        <a href="product-info.html" class="product-list-group-item list-group-item-action">
+        <div class="col-sm-4 col-lg-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="` + products.imgSrc + `" alt="`+ products.description+`" class="img-thumbnail">
+                <div class="card-body">
+                    <h4 class="mb-1">`+ products.name + `</h4>
+                    <p>`+ products.description  +`</p>
+                            <p> A tan solo `+ products.currency+  "   " +products.cost +`</p>
+                    <p class="card-text"></p>
+                    <div class="card-footer text-muted">
+                        ${products.soldCount} artículos vendidos.
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='/product-info.html'" >Ver</button>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        `
+        /* <div class="col-lg-6 col-sm-12">
+            <a href="product-info.html" class="product-list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
                         <img src="` + products.imgSrc + `" alt="`+ products.description+`" class="img-thumbnail">
@@ -76,7 +100,9 @@ function showProductsList() {
                 </div>
             </>
         </div>
-        `
+        </div> */
+        
+        
 
         document.getElementById("product-list-container").innerHTML = htmlContentToAppend;
     }
